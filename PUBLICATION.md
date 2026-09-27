@@ -1,6 +1,6 @@
 # Publication assessment
 
-Status: not ready.
+Status: public reference. Not a production service.
 
 The implementation is a bounded repair reference. It is not an autonomous repair service. It does not commit, push, or open pull requests.
 
@@ -12,14 +12,13 @@ The implementation is a bounded repair reference. It is not an autonomous repair
 - The runner uses an argument allowlist and does not invoke a shell.
 - Local runner replay is process-local and is not a production durable store.
 - Tests, repair, retry, diff capture, hashes, receipt validation, and cleanup use real local execution.
-- The acceptance command checks current files. History scanning is a separate owner publication check.
+- The license is MIT.
+- The public history is a single squashed commit with no machine-specific paths.
+- `workers_dev` is disabled. No public deployment exists.
 
-## Owner action needed
+## Open before production use
 
-- Choose and approve a license.
 - Review the external runner deployment boundary.
 - Review the repository and commit allowlist configuration.
-- Decide whether the historical machine-specific path in the acceptance scan may be removed by an authorized history rewrite.
-- Create the public repository only after these actions are complete.
 
-Until these actions are complete, do not describe the project as open-source ready or as an autonomous repair system.
+Do not describe the project as an autonomous repair system.
