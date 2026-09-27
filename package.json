@@ -1,0 +1,40 @@
+{
+  "name": "self-healing-ci",
+  "type": "module",
+  "description": "A bounded reference implementation for authenticated, deterministic CI repair.",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/REPLACE_WITH_OWNER/self-healing-ci.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": ["src", "runner", "README.md", "SECURITY.md", "CONTRIBUTING.md", "ARCHITECTURE.md", "PUBLICATION.md", "config/example.json"],
+  "scripts": {
+    "lint": "node scripts/lint.mjs",
+    "history:scan": "node scripts/history-scan.mjs",
+    "scan:secrets": "node scripts/secret-scan.mjs",
+    "runner:server": "tsx runner/server.ts",
+    "deploy:exact-sha": "bash proof/deploy-exact-sha.sh",
+    "test": "npm run test:worker && npm run test:runner",
+    "test:runner": "vitest run --config runner/vitest.config.ts",
+    "test:worker": "vitest run --config vitest.config.ts",
+    "test:deploy-sha": "bash proof/deploy-exact-sha.test.sh",
+    "acceptance": "bash scripts/acceptance.sh",
+    "typecheck": "tsc -p tsconfig.json && tsc -p runner/tsconfig.json"
+  },
+  "exports": {
+    ".": "./runner/contracts.ts"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.21.0",
+    "@cloudflare/workers-types": "^5.20260804.1",
+    "@types/node": "^26.4.1",
+    "tsx": "^4.23.13",
+    "typescript": "^5.7.3",
+    "vitest": "^4.1.0",
+    "wrangler": "^4.120.1"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "self-healing-ci-test",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [{ "name": "RUN_INDEX", "class_name": "RunIndex" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RunIndex"] }],
+  "vars": {
+    "DEPLOY_SHA": "0123456789abcdef0123456789abcdef01234567",
+    "OPERATOR_TOKEN": "test-operator-token",
+    "RUNNER_URL": "https://runner.invalid",
+    "RUNNER_TOKEN": "test-runner-token",
+    "REPOSITORY_ALLOWLIST": "{\"fixture\":{\"sha\":\"0123456789abcdef0123456789abcdef01234567\"}}",
+    "MAX_CONCURRENT_RUNS": "1"
+  },
+  "workflows": [
+    {
+      "binding": "SELF_HEAL",
+      "name": "SELF_HEAL_TEST",
+      "class_name": "SelfHealWorkflow"
+    }
+  ]
+}

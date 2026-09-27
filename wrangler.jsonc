@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "self-healing-ci",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "durable_objects": {
+    "bindings": [{ "name": "RUN_INDEX", "class_name": "RunIndex" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RunIndex"] }],
+  "workflows": [
+    {
+      "binding": "SELF_HEAL",
+      "name": "SELF_HEAL",
+      "class_name": "SelfHealWorkflow"
+    }
+  ]
+}

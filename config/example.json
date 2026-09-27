@@ -1,0 +1,13 @@
+{
+  "repositories": {
+    "fixture": {
+      "sourcePath": "/srv/fixtures/example-repository",
+      "testCommand": ["node", "test.mjs"],
+      "generatedModulePath": "generated.js"
+    }
+  },
+  "runner": {
+    "id": "runner-01",
+    "endpoint": "https://runner.example.invalid/v1/runs"
+  }
+}
